@@ -102,6 +102,23 @@ public class Helicopter : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.gameObject.tag == "Damage") {
+			Die ();
+		}
+	}
+
+	public void Die(){
+		StartCoroutine (PlsDie ());
+	}
+
+	IEnumerator PlsDie(){
+		//gameObject.GetComponent<Collider2D> ().enabled = false;
+		gameObject.GetComponent<Helicopter> ().enabled = false;
+		yield return new WaitForSeconds (1.5f);
+		Destroy (gameObject);
+	}
+
 	void OnCollisionExit2D(Collision2D other){
 		if (other.gameObject.tag == "Ground") {
 			state = (int)soldierStates.onAir;

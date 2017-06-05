@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		endedSpawn = false;
-		SpawnWave (quantity);
+		//SpawnWave (quantity);
 	}
 	
 	// Update is called once per frame
@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour {
 		return;
 	}
 
-	void SpawnWave(int numOfEnemy){
+	public void SpawnWave(int numOfEnemy){
 		StartCoroutine (SpawnSingle (numOfEnemy));
 
 	}
