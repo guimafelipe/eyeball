@@ -89,8 +89,14 @@ public class Player : MonoBehaviour {
 		
 
 	void DoFloatMov(){
-		
-		rb.velocity = new Vector3 (hSpeed*Input.GetAxis("Horizontal"), amp*Mathf.Sin (omega*t), 0);
+		float walk = hSpeed * Input.GetAxis ("Horizontal");
+		if (walk > 0 && gameObject.transform.position.x < 20) {
+			rb.velocity = new Vector3 (walk, amp * Mathf.Sin (omega * t), 0);
+		} else if (walk < 0 && gameObject.transform.position.x > -20) {
+			rb.velocity = new Vector3 (walk, amp * Mathf.Sin (omega * t), 0);
+		} else {
+			rb.velocity = new Vector3 (0, amp * Mathf.Sin (omega * t), 0);
+		}
 		t += Time.deltaTime;
 	}
 
