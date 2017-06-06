@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class Manager : MonoBehaviour {
 
@@ -12,6 +14,8 @@ public class Manager : MonoBehaviour {
 	public GameObject UIsystem;
 	public Text WaveNumber;
 
+	private bool gameEnded;
+	public GameObject gameOverTexture;
 	public GameObject player;
 
 	//public string[] script;
@@ -21,6 +25,7 @@ public class Manager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		currentWave = currentLine = 1;
+		gameEnded = false;
 		spawners = GetComponentsInChildren<Spawner> ();
 		player = GameObject.Find ("Player");
 		state = (int)levelstate.waitingStartWave;
@@ -28,6 +33,14 @@ public class Manager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (player.GetComponent<Player> ().hp < 0) {
+			StartCoroutine (GameOver ());
+		}
+		if (gameEnded) {
+			if (Input.GetKey (KeyCode.Space)) {
+				SceneManager.LoadScene (0);
+			}
+		}
 		switch (state) {
 		case (int)levelstate.waitingStartWave:
 			
@@ -62,6 +75,13 @@ public class Manager : MonoBehaviour {
 			break;
 		}
 		//Debug.Log (state);
+	}
+
+	IEnumerator GameOver(){
+		player.SetActive (false);
+		yield return new WaitForSeconds (1f);
+		gameOverTexture.SetActive (true);
+		gameEnded = true;
 	}
 
 	void ThrowWave(int numOfEnemies){
