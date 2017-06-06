@@ -28,6 +28,7 @@ public class Manager : MonoBehaviour {
 		gameEnded = false;
 		spawners = GetComponentsInChildren<Spawner> ();
 		player = GameObject.Find ("Player");
+		gameOverTexture.SetActive (false);
 		state = (int)levelstate.waitingStartWave;
 	}
 	
