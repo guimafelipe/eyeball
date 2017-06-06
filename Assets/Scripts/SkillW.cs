@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillQ : MonoBehaviour {
+public class SkillW : MonoBehaviour {
 
 	[SerializeField]
 	private float cooldown;
-	private float maxCooldown = 2f;
+	private float maxCooldown = 5f;
 
-	public GameObject fireball;
+	public GameObject iceball;
 
 	GameObject player;
 
@@ -22,7 +22,7 @@ public class SkillQ : MonoBehaviour {
 	}
 
 	public void Shot(){
-		Instantiate (fireball, player.transform.position, Quaternion.identity);
+		Instantiate (iceball, player.transform.position, Quaternion.identity);
 	}
 
 	public bool IsOnCD(){

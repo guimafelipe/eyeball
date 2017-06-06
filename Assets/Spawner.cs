@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour {
 	public int quantity = 8;
 	public float cooldown = 1f;
 	public GameObject prefab;
-	private bool endedSpawn;
+	private bool endedSpawn, allDied;
 	//private GameManager gameManager;
 
 	// Use this for initialization
@@ -21,19 +21,20 @@ public class Spawner : MonoBehaviour {
 	void Update () {
 		if (endedSpawn) {
 			if (gameObject.transform.childCount == 0) {
-				AllDied ();
+				allDied = true;
 				endedSpawn = false;
 			}
 		}
 	}
 
-	void AllDied(){
-		//gameManager.OnNotify ("AllDied");
-		return;
+	public bool AllDied(){
+		return allDied;
 	}
 
 	public void SpawnWave(int numOfEnemy){
-		StartCoroutine (SpawnSingle (numOfEnemy));
+		endedSpawn = false;
+		allDied = false;
+		StartCoroutine (SpawnSingle (numOfEnemy - 1));
 
 	}
 

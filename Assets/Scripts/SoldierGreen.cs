@@ -32,7 +32,9 @@ public class SoldierGreen : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+		if (transform.position.y < -50 || Mathf.Abs(transform.position.x) > 50) {
+			Die ();
+		}
 		switch (state) {
 		case (int)soldierStates.onAir:
 			DoFloatMov ();

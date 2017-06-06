@@ -30,7 +30,9 @@ public class SoldierBlue : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (transform.position.y < -50) {
+			Die ();
+		}
 		switch (state) {
 		case (int)soldierStates.onGround:
 			if (!isCloseToPlayer) {

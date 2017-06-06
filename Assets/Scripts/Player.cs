@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	private enum skillPressed : int {skillQ, skillW, skillE, skillR, skillD} ;
+	private enum skillPressed : int {skillQ, skillW, skillE, skillR, skillD, none};
 	private enum stateOfSkill : int {waitingSkill, waitingAim};
 
 	private int activeSkill;
@@ -45,10 +45,15 @@ public class Player : MonoBehaviour {
 				if (!gameObject.GetComponent<SkillQ> ().IsOnCD ()) {
 					gameObject.GetComponent<SkillQ> ().Aim ();
 				}
+				activeSkill = (int)skillPressed.none;
 				break;
 		
-			//case (int)skillPressed.skillW:
-
+			case (int)skillPressed.skillW:
+				if (!gameObject.GetComponent<SkillW> ().IsOnCD ()) {
+					gameObject.GetComponent<SkillW> ().Aim ();
+				}
+				activeSkill = (int)skillPressed.none;
+				break;
 			//case (int)skillPressed.skillE:
 
 			//case (int)skillPressed.skillR:
@@ -56,7 +61,7 @@ public class Player : MonoBehaviour {
 			//case (int)skillPressed.skillD:
 				
 			default:
-				Debug.Log ("Waiting");
+				//Debug.Log ("Waiting");
 				break;
 			}
 
@@ -65,10 +70,10 @@ public class Player : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Q)){
 			activeSkill = (int)skillPressed.skillQ;
 			myState = (int)stateOfSkill.waitingAim;
-		}/* else if (Input.GetKeyDown(KeyCode.W)){
+		}else if (Input.GetKeyDown(KeyCode.W)){
 			activeSkill = (int)skillPressed.skillW;
 			myState = (int)stateOfSkill.waitingAim;
-		} else if (Input.GetKeyDown(KeyCode.E)){
+		} /* else if (Input.GetKeyDown(KeyCode.E)){
 			activeSkill = (int)skillPressed.skillE;
 			myState = (int)stateOfSkill.waitingAim;
 		} else if (Input.GetKeyDown(KeyCode.R)){
