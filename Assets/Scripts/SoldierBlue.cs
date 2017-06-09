@@ -108,7 +108,7 @@ public class SoldierBlue : MonoBehaviour {
 	IEnumerator PlsDie(){
 		//gameObject.GetComponent<Collider2D> ().enabled = false;
 		gameObject.GetComponent<SoldierBlue> ().enabled = false;
-		yield return new WaitForSeconds (1.5f);
+		yield return new WaitForSeconds (0.5f);
 		Destroy (gameObject);
 	}
 

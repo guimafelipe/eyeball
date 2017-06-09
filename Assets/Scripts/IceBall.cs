@@ -7,12 +7,14 @@ public class IceBall : MonoBehaviour {
 
 	GameObject player;
 	Vector3 dir;
+	AudioManager audiomanager;
 
 	float speed = 1.5f, lifetime = 25f;
 
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find ("Player");
+		audiomanager = AudioManager.instance;
 		Vector3 mousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 10f);
 		mousePos = Camera.main.ScreenToWorldPoint (mousePos);
 		dir = new Vector3 ();
@@ -28,6 +30,13 @@ public class IceBall : MonoBehaviour {
 		}
 		gameObject.transform.position = new Vector3 (gameObject.transform.position.x + dir.x * speed * Time.deltaTime, gameObject.transform.position.y + dir.y * speed * Time.deltaTime,
 			gameObject.transform.position.z);
+	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.gameObject.tag == "Enemy") {
+			audiomanager.PlaySound ("skill2");
+		}
+
 	}
 
 }

@@ -70,7 +70,7 @@ public class Player : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Q)){
 			activeSkill = (int)skillPressed.skillQ;
 			myState = (int)stateOfSkill.waitingAim;
-		}else if (Input.GetKeyDown(KeyCode.W)){
+		}else if (Input.GetKeyDown(KeyCode.E)){
 			activeSkill = (int)skillPressed.skillW;
 			myState = (int)stateOfSkill.waitingAim;
 		} /* else if (Input.GetKeyDown(KeyCode.E)){

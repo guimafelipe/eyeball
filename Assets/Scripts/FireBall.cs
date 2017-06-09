@@ -7,7 +7,7 @@ public class FireBall : MonoBehaviour {
 
 	GameObject player;
 	Vector3 dir;
-
+	AudioManager audiomanager;
 	float speed = 3f, lifetime = 25f;
 
 	// Use this for initialization
@@ -16,7 +16,7 @@ public class FireBall : MonoBehaviour {
 		Vector3 mousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 10f);
 		mousePos = Camera.main.ScreenToWorldPoint (mousePos);
 		dir = new Vector3 ();
-
+		audiomanager = AudioManager.instance;
 		dir = mousePos - gameObject.transform.position;
 		dir = dir.normalized;
 	}
@@ -33,7 +33,7 @@ public class FireBall : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other){
 		if (other.gameObject.tag != "Player") {
 			Instantiate (explosion, transform.position, Quaternion.identity);
-
+			audiomanager.PlaySound ("skill1");
 			StartCoroutine (EndBullet ());
 			gameObject.SetActive(false);
 		}
