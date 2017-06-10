@@ -1,17 +1,12 @@
 fileFormatVersion: 2
-guid: 23f1e433bd1ecf447905bdc1557b05b2
-timeCreated: 1497054173
+guid: 3bd811f6177b3f24ca91310f00a5598b
+timeCreated: 1497054253
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: soldier_running_0
-    21300002: soldier_running_1
-    21300004: soldier_running_2
-    21300006: soldier_running_3
-    21300008: soldier_running_4
-    21300010: soldier_running_5
-    21300012: soldier_running_6
-    21300014: soldier_running_7
+    21300000: soldier_shooting_0
+    21300002: soldier_shooting_1
+    21300004: soldier_shooting_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -110,36 +105,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: soldier_running_0
+      name: soldier_shooting_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 0
-        width: 37
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: soldier_running_1
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 0
-        width: 32
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: soldier_running_2
-      rect:
-        serializedVersion: 2
-        x: 105
+        x: 4
         y: 0
         width: 35
         height: 46
@@ -149,65 +118,26 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: soldier_running_3
+      name: soldier_shooting_1
       rect:
         serializedVersion: 2
-        x: 157
+        x: 52
         y: 0
-        width: 38
-        height: 46
+        width: 31
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: soldier_running_4
+      name: soldier_shooting_2
       rect:
         serializedVersion: 2
-        x: 208
+        x: 110
         y: 0
-        width: 36
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: soldier_running_5
-      rect:
-        serializedVersion: 2
-        x: 258
-        y: 0
-        width: 32
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: soldier_running_6
-      rect:
-        serializedVersion: 2
-        x: 309
-        y: 0
-        width: 35
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: soldier_running_7
-      rect:
-        serializedVersion: 2
-        x: 359
-        y: 0
-        width: 40
-        height: 46
+        width: 28
+        height: 56
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

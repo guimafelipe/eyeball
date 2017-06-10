@@ -9,6 +9,7 @@ public class SoldierBlue : MonoBehaviour {
 	private enum soldierStates : int {walking, onGround, onAir, stunned, shooting};
 	private int state;
 
+	Animator anim;
 	public float shootCD, maxShootCD = 1f, speed = 1f, minDist = 1.5f, t = 0;
 	private Rigidbody2D rb;
 
@@ -16,6 +17,8 @@ public class SoldierBlue : MonoBehaviour {
 	void Start () {
 		state = (int)soldierStates.onAir;
 		isCloseToPlayer = false;
+		anim = GetComponent<Animator> ();
+		anim.SetBool ("shooting", false);
 		player = GameObject.Find ("Player");
 		rb = gameObject.GetComponent<Rigidbody2D> ();
 		if (gameObject.transform.position.x > player.transform.position.x) {
@@ -50,21 +53,21 @@ public class SoldierBlue : MonoBehaviour {
 		shootCD -= Time.deltaTime;
 		t += Time.deltaTime;
 		if (gameObject.transform.position.x > player.transform.position.x && gunEdge.transform.localPosition.x > 0) {
-			gameObject.GetComponent<SpriteRenderer> ().flipX = true;
-			Vector3 invertGunEdge;
-			invertGunEdge = new Vector3 (0, 0, 0);
-			invertGunEdge = gunEdge.transform.localPosition;
-			invertGunEdge.x = -invertGunEdge.x;
-			gunEdge.transform.localPosition = invertGunEdge;
-		} else if(gameObject.transform.position.x < player.transform.position.x && gunEdge.transform.localPosition.x < 0){
 			gameObject.GetComponent<SpriteRenderer> ().flipX = false;
 			Vector3 invertGunEdge;
 			invertGunEdge = new Vector3 (0, 0, 0);
 			invertGunEdge = gunEdge.transform.localPosition;
 			invertGunEdge.x = -invertGunEdge.x;
 			gunEdge.transform.localPosition = invertGunEdge;
+		} else if(gameObject.transform.position.x < player.transform.position.x && gunEdge.transform.localPosition.x < 0){
+			gameObject.GetComponent<SpriteRenderer> ().flipX = true;
+			Vector3 invertGunEdge;
+			invertGunEdge = new Vector3 (0, 0, 0);
+			invertGunEdge = gunEdge.transform.localPosition;
+			invertGunEdge.x = -invertGunEdge.x;
+			gunEdge.transform.localPosition = invertGunEdge;
 		}
-		if (t > 10f && state == (int)soldierStates.onGround) {
+		if (t > 10f && state == (int)soldierStates.walking) {
 			state = (int)soldierStates.shooting;
 		}
 	}
@@ -82,6 +85,7 @@ public class SoldierBlue : MonoBehaviour {
 	}
 
 	void ShootPlayer(){
+		anim.SetBool ("shooting", true);
 		rb.velocity = new Vector3 (0, rb.velocity.y);
 		if (shootCD <= 0) {
 			var bullet = Instantiate (bulletPrefab, gunEdge.transform.position, Quaternion.identity);
