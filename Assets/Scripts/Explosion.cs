@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour {
 
-	float timelife = 0.5f;
+	float timelife = 0.25f;
 	// Use this for initialization
 	void Start () {
 		

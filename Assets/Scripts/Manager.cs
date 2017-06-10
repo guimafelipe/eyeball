@@ -34,7 +34,7 @@ public class Manager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (player.GetComponent<Player> ().hp < 0) {
+		if (player.GetComponent<Player> ().hp <= 0) {
 			StartCoroutine (GameOver ());
 		}
 		if (gameEnded) {
@@ -79,10 +79,12 @@ public class Manager : MonoBehaviour {
 	}
 
 	IEnumerator GameOver(){
-		player.SetActive (false);
+		player.GetComponent<Player> ().enabled = false;
+		player.GetComponent<SpriteRenderer>().enabled = false;
 		yield return new WaitForSeconds (1f);
 		gameOverTexture.SetActive (true);
 		gameEnded = true;
+		//player.SetActive (false);
 	}
 
 	void ThrowWave(int numOfEnemies){
