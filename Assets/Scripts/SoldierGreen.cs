@@ -32,7 +32,7 @@ public class SoldierGreen : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.y < -50 || Mathf.Abs(transform.position.x) > 50) {
+		if (transform.position.y < -50 || transform.position.y > 8 || Mathf.Abs(transform.position.x) > 50) {
 			Die ();
 		}
 		switch (state) {
@@ -52,7 +52,7 @@ public class SoldierGreen : MonoBehaviour {
 			break;
 		}
 		shootCD -= Time.deltaTime;
-		if (gameObject.transform.position.x < player.transform.position.x && gunEdge.transform.localPosition.x < 0) {
+		if (gameObject.transform.position.x > player.transform.position.x && gunEdge.transform.localPosition.x > 0) {
 			gameObject.GetComponent<SpriteRenderer> ().flipX = true;
 			Collider2D col = gameObject.GetComponent<Collider2D> ();
 			col.offset = new Vector2 (-col.offset.x, col.offset.y);
@@ -61,7 +61,7 @@ public class SoldierGreen : MonoBehaviour {
 			invertGunEdge = gunEdge.transform.localPosition;
 			invertGunEdge.x = -invertGunEdge.x;
 			gunEdge.transform.localPosition = invertGunEdge;
-		} else if(gameObject.transform.position.x > player.transform.position.x && gunEdge.transform.localPosition.x > 0) {
+		} else if(gameObject.transform.position.x < player.transform.position.x && gunEdge.transform.localPosition.x < 0) {
 			gameObject.GetComponent<SpriteRenderer> ().flipX = false;
 			Collider2D col = gameObject.GetComponent<Collider2D> ();
 			col.offset = new Vector2 (-col.offset.x, col.offset.y);

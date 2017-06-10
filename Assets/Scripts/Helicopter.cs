@@ -32,7 +32,7 @@ public class Helicopter : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.y < -50 || Mathf.Abs(transform.position.x) > 50) {
+		if (transform.position.y < -50 || transform.position.y > 8 || Mathf.Abs(transform.position.x) > 50) {
 			Die ();
 		}
 		switch (state) {

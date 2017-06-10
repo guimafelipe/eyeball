@@ -6,7 +6,7 @@ public class SoldierBlue : MonoBehaviour {
 
 	public GameObject player, gunEdge, bulletPrefab;
 	private bool isCloseToPlayer;
-	private enum soldierStates : int {onGround, onAir, stunned, shooting};
+	private enum soldierStates : int {walking, onGround, onAir, stunned, shooting};
 	private int state;
 
 	public float shootCD, maxShootCD = 1f, speed = 1f, minDist = 1.5f, t = 0;
@@ -34,7 +34,7 @@ public class SoldierBlue : MonoBehaviour {
 			Die ();
 		}
 		switch (state) {
-		case (int)soldierStates.onGround:
+		case (int)soldierStates.walking:
 			if (!isCloseToPlayer) {
 				WalkToPlayer ();
 			} else {
@@ -91,7 +91,7 @@ public class SoldierBlue : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.tag == "Ground") {
-			state = (int)soldierStates.onGround;
+			state = (int)soldierStates.walking;
 		} 
 	}
 
